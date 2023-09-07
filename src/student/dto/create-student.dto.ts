@@ -8,8 +8,8 @@ import {
   EReligion,
 } from '../enum/student.enum';
 
-import { ExperienceDto } from 'src/experience/dto/experience.dto';
-import { CreateEducationDto } from 'src/education/dto/create-education.dto';
+import { ExperienceDto } from '../../experience/dto/experience.dto';
+import { CreateEducationDto } from '../../education/dto/create-education.dto';
 
 export class CreateStudentDto {
   @IsString()

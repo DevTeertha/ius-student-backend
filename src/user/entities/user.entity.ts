@@ -3,7 +3,7 @@ import * as bcrypt from 'bcrypt';
 
 import { EUserType } from '../enum/user.enum';
 
-import { BaseEntity } from 'src/shared/entity/base.entity';
+import { BaseEntity } from '../../shared/entity/base.entity';
 import { Exclude } from 'class-transformer';
 
 @Entity('users')

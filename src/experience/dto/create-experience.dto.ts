@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 import { StudentDto } from 'src/student/dto/student.dto';
-import { Student } from 'src/student/entities/student.entity';
+import { Student } from '../../student/entities/student.entity';
 
 export class CreateExperienceDto {
   @IsNotEmpty()

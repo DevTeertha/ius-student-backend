@@ -12,8 +12,8 @@ import { ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 
 import { FileDTO, FileResponseDTO } from './dto/file.dto';
 
-import { UtilService } from 'src/shared/services/util.service';
-import { ResponseDTO } from 'src/shared/dto/response.dto';
+import { UtilService } from '../shared/services/util.service';
+import { ResponseDTO } from '../shared/dto/response.dto';
 
 @ApiTags('File Uplaod')
 @Controller('media')

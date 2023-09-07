@@ -13,14 +13,14 @@ import {
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 import { UserService } from './user.service';
-import { UtilService } from 'src/shared/services/util.service';
+import { UtilService } from '../shared/services/util.service';
 
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { ResponseDTO } from 'src/shared/dto/response.dto';
+import { ResponseDTO } from '../shared/dto/response.dto';
 import { UserDto } from './dto/user.dto';
 
-import { JwtAuthGuard } from 'src/shared/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '../shared/guards/jwt-auth.guard';
 
 @Controller('user')
 @ApiTags('User')

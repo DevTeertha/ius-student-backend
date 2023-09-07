@@ -14,14 +14,14 @@ import {
 import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
 
 import { StudentService } from './student.service';
-import { UtilService } from 'src/shared/services/util.service';
+import { UtilService } from '../shared/services/util.service';
 
 import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
-import { ResponseDTO } from 'src/shared/dto/response.dto';
+import { ResponseDTO } from '../shared/dto/response.dto';
 import { StudentDto, StudentPaginationResponseDto } from './dto/student.dto';
 
-import { JwtAuthGuard } from 'src/shared/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '../shared/guards/jwt-auth.guard';
 
 @Controller('students')
 @ApiTags('Student')

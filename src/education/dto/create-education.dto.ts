@@ -1,14 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsNotEmpty,
-  IsString,
-  IsOptional,
-  IsNumber,
-  IsBoolean,
-} from 'class-validator';
+import { IsNotEmpty, IsString, IsOptional, IsNumber } from 'class-validator';
 
 import { EDegreeType } from '../enum/education.enum';
-import { Student } from 'src/student/entities/student.entity';
 
 export class CreateEducationDto {
   @IsNumber()

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { UserService } from './user.service';
-import { UtilService } from 'src/shared/services/util.service';
+import { UtilService } from '../shared/services/util.service';
 
 import { UserController } from './user.controller';
 

@@ -6,7 +6,7 @@ import {
   OneToOne,
 } from 'typeorm';
 
-import { Student } from 'src/student/entities/student.entity';
+import { Student } from '../../student/entities/student.entity';
 
 import { EDegreeType } from '../enum/education.enum';
 

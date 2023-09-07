@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 import { initializeApp } from 'firebase/app';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 
-import { firebaseConfig } from 'src/shared/constant/firebase.constant';
+import { firebaseConfig } from '../shared/constant/firebase.constant';
 
 import { FileDTO, FileResponseDTO } from './dto/file.dto';
 

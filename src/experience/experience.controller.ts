@@ -13,14 +13,14 @@ import {
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 import { ExperienceService } from './experience.service';
-import { UtilService } from 'src/shared/services/util.service';
+import { UtilService } from '../shared/services/util.service';
 
 import { CreateExperienceDto } from './dto/create-experience.dto';
 import { UpdateExperienceDto } from './dto/update-experience.dto';
 import { ExperienceDto } from './dto/experience.dto';
-import { ResponseDTO } from 'src/shared/dto/response.dto';
+import { ResponseDTO } from '../shared/dto/response.dto';
 
-import { JwtAuthGuard } from 'src/shared/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '../shared/guards/jwt-auth.guard';
 
 @Controller('experience')
 @ApiTags('Experience')

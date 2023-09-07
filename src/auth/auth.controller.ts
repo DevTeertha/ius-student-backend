@@ -2,10 +2,10 @@ import { Controller, Post, Body, UnauthorizedException } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
 import { AuthService } from './auth.service';
-import { UtilService } from 'src/shared/services/util.service';
+import { UtilService } from '../shared/services/util.service';
 
 import { LoginDto } from './dto/login.dto';
-import { ResponseDTO } from 'src/shared/dto/response.dto';
+import { ResponseDTO } from '../shared/dto/response.dto';
 import { LoginResponseDto } from './dto/login-response.dto';
 
 @Controller('auth')

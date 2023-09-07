@@ -8,7 +8,7 @@ import { CreateExperienceDto } from './dto/create-experience.dto';
 import { UpdateExperienceDto } from './dto/update-experience.dto';
 
 import { Experience } from './entities/experience.entity';
-import { Student } from 'src/student/entities/student.entity';
+import { Student } from '../student/entities/student.entity';
 
 @Injectable()
 export class ExperienceService {

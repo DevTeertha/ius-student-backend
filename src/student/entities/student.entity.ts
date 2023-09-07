@@ -7,9 +7,9 @@ import {
   OneToOne,
 } from 'typeorm';
 
-import { BaseEntity } from 'src/shared/entity/base.entity';
-import { Education } from 'src/education/entities/education.entity';
-import { Experience } from 'src/experience/entities/experience.entity';
+import { BaseEntity } from '../../shared/entity/base.entity';
+import { Education } from '../../education/entities/education.entity';
+import { Experience } from '../../experience/entities/experience.entity';
 
 import {
   EGender,

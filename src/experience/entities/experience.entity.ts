@@ -7,8 +7,8 @@ import {
   ManyToOne,
 } from 'typeorm';
 
-import { Student } from 'src/student/entities/student.entity';
-import { BaseEntity } from 'src/shared/entity/base.entity';
+import { Student } from '../../student/entities/student.entity';
+import { BaseEntity } from '../../shared/entity/base.entity';
 
 @Entity('experiences')
 export class Experience extends BaseEntity {

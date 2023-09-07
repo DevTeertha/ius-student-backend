@@ -3,7 +3,7 @@ import { IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 import { CreateExperienceDto } from './create-experience.dto';
-import { Student } from 'src/student/entities/student.entity';
+import { Student } from '../../student/entities/student.entity';
 
 export class UpdateExperienceDto extends PartialType(CreateExperienceDto) {
   @IsOptional()

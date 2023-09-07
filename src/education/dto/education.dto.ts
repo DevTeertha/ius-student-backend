@@ -3,7 +3,7 @@ import { IsOptional } from 'class-validator';
 
 import { EDegreeType } from './../enum/education.enum';
 
-import { Student } from 'src/student/entities/student.entity';
+import { Student } from '../../student/entities/student.entity';
 
 export class EducationDto {
   @IsOptional()
