@@ -127,7 +127,7 @@ export class StudentService {
 
   async remove(id: number): Promise<StudentDto> {
     const findStudent = await this.findOne(id);
-    await this.studentRepository.delete(id);
+    await this.studentRepository.delete({ studentId: id });
     return findStudent;
   }
 }
