@@ -36,7 +36,9 @@ export class Experience extends BaseEntity {
   @Column({ default: true })
   isCurrentEmployee: boolean;
 
-  @ManyToOne(() => Student, (student: Student) => student.experiences)
+  @ManyToOne(() => Student, (student: Student) => student.experiences, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'student', referencedColumnName: 'id' })
   student: Student | number;
 

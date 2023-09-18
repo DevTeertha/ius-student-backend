@@ -9,13 +9,14 @@ import {
 } from '../enum/student.enum';
 
 import { CreateEducationDto } from 'src/education/dto/create-education.dto';
+import { BaseDto } from 'src/shared/dto/base.dto';
 
 export class StudentPaginationResponseDto {
   count: number;
   students: StudentDto[];
 }
 
-export class StudentDto {
+export class StudentDto extends BaseDto {
   @IsNumber()
   @IsNotEmpty()
   @ApiProperty({ example: 212010110, name: 'studentId', required: true })

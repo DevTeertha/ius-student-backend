@@ -9,6 +9,8 @@ import {
   EMaritalStatus,
   EReligion,
 } from '../enum/student.enum';
+import { EducationDto } from 'src/education/dto/education.dto';
+import { ExperienceDto } from 'src/experience/dto/experience.dto';
 
 export class UpdateStudentDto extends PartialType(CreateStudentDto) {
   @IsNumber()
@@ -151,4 +153,21 @@ export class UpdateStudentDto extends PartialType(CreateStudentDto) {
     required: false,
   })
   motherPhone?: string;
+
+  @IsOptional()
+  @ApiProperty({
+    type: EducationDto,
+    name: 'education',
+    required: false,
+  })
+  education?: EducationDto;
+
+  @IsOptional()
+  @ApiProperty({
+    type: ExperienceDto,
+    name: 'experiences',
+    required: false,
+    isArray: true
+  })
+  experiences?: ExperienceDto[];
 }

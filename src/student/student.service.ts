@@ -8,12 +8,18 @@ import { UpdateStudentDto } from './dto/update-student.dto';
 import { StudentDto, StudentPaginationResponseDto } from './dto/student.dto';
 
 import { Student } from './entities/student.entity';
+import { Experience } from 'src/experience/entities/experience.entity';
+import { Education } from 'src/education/entities/education.entity';
 
 @Injectable()
 export class StudentService {
   constructor(
     @InjectRepository(Student)
     private studentRepository: Repository<Student>,
+    @InjectRepository(Experience)
+    private experienceRepository: Repository<Experience>,
+    @InjectRepository(Education)
+    private educationRepository: Repository<Education>,
   ) {}
 
   async create(createStudentDto: CreateStudentDto): Promise<StudentDto> {
@@ -95,7 +101,27 @@ export class StudentService {
     updateStudentDto: UpdateStudentDto,
   ): Promise<StudentDto> {
     const student = plainToClass(Student, updateStudentDto);
-    await this.studentRepository.update({ id }, { ...student });
+
+    if (student?.experiences?.length) {
+      await this.experienceRepository.delete({ student: id });
+      await this.experienceRepository.save({ ...student.experiences });
+    }
+
+    if (student?.education) {
+      student.education?.id &&
+        (await this.educationRepository.delete(student.education.id));
+
+      const existingStudent = await this.findOne(id);
+      await this.educationRepository.save({
+        ...student.education,
+        student: existingStudent.id,
+      });
+    }
+
+    delete student.experiences;
+    delete student.education;
+
+    await this.studentRepository.update({ studentId: id }, { ...student });
     return await this.findOne(id);
   }
 

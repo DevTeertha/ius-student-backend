@@ -36,6 +36,6 @@ export class Education {
   @OneToOne(() => Student, (student: Student) => student.education, {
     onDelete: 'CASCADE',
   })
-  @JoinColumn()
+  @JoinColumn({ name: 'student', referencedColumnName: 'id' })
   student: Student | number;
 }
