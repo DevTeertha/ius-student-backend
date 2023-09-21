@@ -1,4 +1,10 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { MediaService } from './../media/media.service';
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass } from 'class-transformer';
 import { FindOneOptions, Repository } from 'typeorm';
@@ -10,6 +16,7 @@ import { StudentDto, StudentPaginationResponseDto } from './dto/student.dto';
 import { Student } from './entities/student.entity';
 import { Experience } from 'src/experience/entities/experience.entity';
 import { Education } from 'src/education/entities/education.entity';
+import { ExperienceDto } from 'src/experience/dto/experience.dto';
 
 @Injectable()
 export class StudentService {
@@ -20,6 +27,7 @@ export class StudentService {
     private experienceRepository: Repository<Experience>,
     @InjectRepository(Education)
     private educationRepository: Repository<Education>,
+    private mediaService: MediaService,
   ) {}
 
   async create(createStudentDto: CreateStudentDto): Promise<StudentDto> {
@@ -97,21 +105,36 @@ export class StudentService {
   }
 
   async update(
-    id: number,
+    studentId: number,
     updateStudentDto: UpdateStudentDto,
   ): Promise<StudentDto> {
     const student = plainToClass(Student, updateStudentDto);
+    const existingStudent = await this.findOne(studentId);
 
+    if (!existingStudent) {
+      throw new NotFoundException('Student not found!');
+    }
+
+    await this.experienceRepository.delete({ student: existingStudent.id });
     if (student?.experiences?.length) {
-      await this.experienceRepository.delete({ student: id });
-      await this.experienceRepository.save({ ...student.experiences });
+      const experienceResponse = new Promise((resolve) => {
+        resolve(
+          student?.experiences?.map((experience: ExperienceDto) => {
+            return {
+              ...experience,
+              student: existingStudent.id,
+            };
+          }),
+        );
+      });
+      const newExperiences = await experienceResponse;
+      await this.experienceRepository.save(newExperiences);
     }
 
     if (student?.education) {
       student.education?.id &&
         (await this.educationRepository.delete(student.education.id));
 
-      const existingStudent = await this.findOne(id);
       await this.educationRepository.save({
         ...student.education,
         student: existingStudent.id,
@@ -121,12 +144,22 @@ export class StudentService {
     delete student.experiences;
     delete student.education;
 
-    await this.studentRepository.update({ studentId: id }, { ...student });
-    return await this.findOne(id);
+    await this.studentRepository.update(
+      { studentId: studentId },
+      { ...student },
+    );
+    return await this.findOne(studentId);
   }
 
   async remove(id: number): Promise<StudentDto> {
     const findStudent = await this.findOne(id);
+    if (findStudent?.imgUrl) {
+      try {
+        await this.mediaService.deleteFile(findStudent.imgUrl);
+      } catch (error) {
+        await this.studentRepository.delete({ studentId: id });
+      }
+    }
     await this.studentRepository.delete({ studentId: id });
     return findStudent;
   }

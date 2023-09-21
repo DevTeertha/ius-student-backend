@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { MediaModule } from 'src/media/media.module';
+
 import { StudentController } from './student.controller';
 
 import { StudentService } from './student.service';
@@ -11,7 +13,10 @@ import { Experience } from 'src/experience/entities/experience.entity';
 import { Education } from 'src/education/entities/education.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Student, Experience, Education])],
+  imports: [
+    TypeOrmModule.forFeature([Student, Experience, Education]),
+    MediaModule,
+  ],
   controllers: [StudentController],
   providers: [StudentService, UtilService],
   exports: [StudentService],

@@ -1,9 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 
-import { Student } from '../../student/entities/student.entity';
-
-export class ExperienceDto {
+export class ExperienceResponseDto {
   @IsNotEmpty()
   @ApiProperty({
     example: 'Mind Orbital Technologies',
@@ -67,10 +65,4 @@ export class ExperienceDto {
     required: true,
   })
   isCurrentEmployee: boolean;
-
-  @ApiProperty({
-    name: 'student',
-    required: true,
-  })
-  student?: Student | number;
 }

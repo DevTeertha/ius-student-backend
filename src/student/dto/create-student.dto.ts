@@ -100,7 +100,12 @@ export class CreateStudentDto {
 
   @IsString()
   @IsOptional()
-  @ApiProperty({ example: 'Bangladesh', name: 'imgUrl', required: true })
+  @ApiProperty({
+    example:
+      'https://firebasestorage.googleapis.com/v0/b/ius-student.appspot.com/o/ius_Student_add-image.png_1695115945224?alt=media&token=047255c2-9630-4a2d-8635-c9d862045f8e',
+    name: 'imgUrl',
+    required: true,
+  })
   imgUrl: string;
 
   @IsOptional()

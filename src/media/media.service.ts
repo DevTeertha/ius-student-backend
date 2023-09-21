@@ -1,6 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { initializeApp } from 'firebase/app';
-import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
+import {
+  deleteObject,
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytes,
+} from 'firebase/storage';
 
 import { firebaseConfig } from '../shared/constant/firebase.constant';
 
@@ -26,5 +32,11 @@ export class MediaService {
       key,
       url,
     };
+  }
+
+  async deleteFile(key: string) {
+    const storage = getStorage();
+    const desertRef = ref(storage, key);
+    return await deleteObject(desertRef);
   }
 }

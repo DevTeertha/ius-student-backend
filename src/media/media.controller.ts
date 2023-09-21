@@ -1,7 +1,9 @@
 import {
   Controller,
+  Get,
   HttpException,
   HttpStatus,
+  Param,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -22,6 +24,25 @@ export class MediaController {
     private readonly mediaService: MediaService,
     private readonly utilService: UtilService,
   ) {}
+
+  @Get('/delete/:key')
+  async deleteImage(
+    @Param('key') key: string,
+  ): Promise<ResponseDTO<FileResponseDTO>> {
+    try {
+      return this.utilService.successReponse(
+        await this.mediaService.deleteFile(key),
+        'File deleted successfully',
+      );
+    } catch (error) {
+      throw new HttpException(
+        this.utilService.errorReponse(
+          error?.message ?? 'File cannot be deleted',
+        ),
+        error?.status ?? HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
 
   @Post()
   @ApiConsumes('multipart/form-data')
