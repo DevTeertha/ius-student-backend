@@ -8,8 +8,8 @@ import {
   EStudentType,
 } from '../enum/student.enum';
 
-import { CreateEducationDto } from 'src/education/dto/create-education.dto';
-import { BaseDto } from 'src/shared/dto/base.dto';
+import { CreateEducationDto } from '../../education/dto/create-education.dto';
+import { BaseDto } from '../../shared/dto/base.dto';
 
 export class StudentPaginationResponseDto {
   count: number;

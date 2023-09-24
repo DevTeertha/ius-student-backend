@@ -9,8 +9,8 @@ import { StudentService } from './student.service';
 import { UtilService } from '../shared/services/util.service';
 
 import { Student } from './entities/student.entity';
-import { Experience } from 'src/experience/entities/experience.entity';
-import { Education } from 'src/education/entities/education.entity';
+import { Experience } from '../experience/entities/experience.entity';
+import { Education } from '../education/entities/education.entity';
 
 @Module({
   imports: [

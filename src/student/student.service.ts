@@ -11,12 +11,12 @@ import { FindOneOptions, Repository } from 'typeorm';
 
 import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
+import { ExperienceDto } from '../experience/dto/experience.dto';
 import { StudentDto, StudentPaginationResponseDto } from './dto/student.dto';
 
 import { Student } from './entities/student.entity';
-import { Experience } from 'src/experience/entities/experience.entity';
-import { Education } from 'src/education/entities/education.entity';
-import { ExperienceDto } from 'src/experience/dto/experience.dto';
+import { Experience } from '../experience/entities/experience.entity';
+import { Education } from '../education/entities/education.entity';
 
 @Injectable()
 export class StudentService {

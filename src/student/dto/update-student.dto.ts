@@ -10,8 +10,8 @@ import {
   EReligion,
 } from '../enum/student.enum';
 
-import { EducationResponseDto } from 'src/education/dto/education-response.dto';
-import { ExperienceResponseDto } from 'src/experience/dto/experience-response.dto';
+import { EducationResponseDto } from '../../education/dto/education-response.dto';
+import { ExperienceResponseDto } from '../../experience/dto/experience-response.dto';
 
 export class UpdateStudentDto extends PartialType(CreateStudentDto) {
   @IsNumber()
